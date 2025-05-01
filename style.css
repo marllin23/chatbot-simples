@@ -1,134 +1,121 @@
-/* Estilo geral */
+/* Definições de estilo geral */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #f06, #4a90e2); /* Gradiente de fundo */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-size: cover;
-    color: #fff;
-    position: relative;
 }
 
-/* Container do Chat */
-.chat-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
-    width: 400px; /* Tamanho do chat */
-    height: 550px; /* Tamanho do chat */
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+#chat-container {
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    justify-content: flex-end;
-    position: relative;
-    overflow: hidden; /* Para que os emojis não saiam da caixa */
 }
 
-/* Caixa do chat */
-.chat-box {
+#chat-box {
+    flex: 1;
+    padding: 10px;
     overflow-y: auto;
-    flex-grow: 1;
-    margin-bottom: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.chat-box div {
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    animation: slideIn 0.3s ease-in-out;
-}
-
-.chat-box .user {
-    text-align: right;
-    background-color: #4a90e2;
-    color: white;
-    max-width: 70%;
-    margin-left: auto;
-}
-
-.chat-box .bot {
-    text-align: left;
-    background-color: #34b89b;
-    color: white;
-    max-width: 70%;
-}
-
+/* Animações */
 @keyframes slideIn {
     0% {
-        transform: translateX(100%);
+        transform: translateY(50px);
+        opacity: 0;
     }
     100% {
-        transform: translateX(0);
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-/* Caixa de entrada de texto */
-input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 30px;
-    font-size: 16px;
-    margin-top: 10px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    outline: none;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-input[type="text"]:focus {
-    border-color: #4a90e2;
-    background-color: #e7f3ff;
+/* Estilo das mensagens */
+.message {
+    max-width: 75%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
 }
 
-/* Botão de Enviar */
-button {
-    background-color: #34b89b;
+.user {
+    background-color: #4CAF50;
+    color: white;
+    align-self: flex-start;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.bot {
+    background-color: #f1f1f1;
+    color: #333;
+    align-self: flex-end;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Estilo do campo de input */
+#user-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    width: calc(100% - 30px);
+    font-size: 14px;
+}
+
+/* Estilo do botão */
+#send-btn {
+    padding: 10px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 30px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+    margin: 10px;
+    font-size: 14px;
+    animation: pulse 1s infinite;
 }
 
-button:hover {
-    background-color: #28a77a;
-}
-
-/* Emojis flutuantes */
-#emoji-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: -1; /* Emojis abaixo dos outros conteúdos */
-}
-
-/* Emojis com cor clara e visível */
-.emoji {
-    position: absolute;
-    font-size: 30px;
-    animation: float 5s ease-in-out infinite;
-    color: #fff; /* A cor branca ajuda na visibilidade */
-}
-
-/* Animação para os emojis flutuarem */
-@keyframes float {
+/* Animação de pulsar no botão de envio */
+@keyframes pulse {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: scale(1);
     }
     50% {
-        transform: translateY(-50px) rotate(180deg);
+        transform: scale(1.1);
     }
     100% {
-        transform: translateY(0) rotate(360deg);
+        transform: scale(1);
     }
+}
+
+/* Alterando cor do botão no hover */
+#send-btn:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para o input ao focar */
+#user-input:focus {
+    outline: none;
+    border-color: #4CAF50;
 }
