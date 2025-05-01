@@ -8,6 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/white-sand.png');
+    background-size: cover;
 }
 
 #chat-container {
@@ -118,4 +120,41 @@ body {
 #user-input:focus {
     outline: none;
     border-color: #4CAF50;
+}
+
+/* Estilo para o input do usuário */
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 80%;
+    margin-right: 10px;
+}
+
+/* Emojis */
+#emoji-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    animation: emojiAnimation 5s infinite;
+}
+
+@keyframes emojiAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(90deg);
+    }
+    75% {
+        transform: rotate(135deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
 }
