@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Interativo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box" id="chat-box">
-            <div class="bot">
-                <i class="fas fa-robot"></i> Olá, sou o seu assistente virtual!
-            </div>
-        </div>
-        <input type="text" id="user-input" placeholder="Digite sua mensagem...">
-        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Enviar</button>
-    </div>
 
-    <!-- Emojis flutuantes, gerados dinamicamente pelo JS -->
-    <div id="emoji-container"></div>
+    <div id="chat-container">
+        <div id="chat-box">
+            <!-- Mensagens do chat serão inseridas aqui -->
+        </div>
+
+        <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+        <button id="send-btn">Enviar</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
