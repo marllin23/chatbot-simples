@@ -1,36 +1,25 @@
+// Função para enviar mensagens
 function sendMessage() {
-    let userInput = document.getElementById('user-input').value;
-    if (userInput.trim() === "") return;
+    var input = document.getElementById('user-input').value;
+    var chatBox = document.getElementById('chat-box');
+    
+    if (input.trim() !== "") {
+        // Adiciona a mensagem do usuário
+        var userMessage = document.createElement('div');
+        userMessage.classList.add('user');
+        userMessage.innerHTML = `<i class="fas fa-user"></i>${input}`;
+        chatBox.appendChild(userMessage);
+        
+        // Resposta do bot (simples exemplo)
+        var botMessage = document.createElement('div');
+        botMessage.classList.add('bot');
+        botMessage.innerHTML = `<i class="fas fa-robot"></i> Estou processando sua mensagem...`;
+        chatBox.appendChild(botMessage);
 
-    // Adiciona a mensagem do usuário
-    let chatBox = document.getElementById('chat-box');
-    let userMessage = document.createElement('div');
-    userMessage.classList.add('user');
-    userMessage.textContent = userInput;
-    chatBox.appendChild(userMessage);
+        // Limpa a caixa de entrada de texto
+        document.getElementById('user-input').value = '';
 
-    // Resposta automática do bot
-    let botMessage = document.createElement('div');
-    botMessage.classList.add('bot');
-    botMessage.textContent = getBotResponse(userInput);
-    chatBox.appendChild(botMessage);
-
-    // Rola a tela para mostrar a última mensagem
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    // Limpa o campo de entrada
-    document.getElementById('user-input').value = "";
-}
-
-function getBotResponse(userInput) {
-    const responses = {
-        "olá": "Olá! Como posso ajudar você?",
-        "como vai?": "Estou bem, obrigado por perguntar! E você?",
-        "qual é o seu nome?": "Eu sou um chatbot sem nome por enquanto. :)",
-        "adeus": "Adeus! Até logo!",
-    };
-
-    userInput = userInput.toLowerCase();
-
-    return responses[userInput] || "Desculpe, não entendi. Pode tentar outra coisa?";
+        // Rola para a última mensagem
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 }
