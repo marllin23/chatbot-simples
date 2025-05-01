@@ -14,8 +14,8 @@ body {
 /* Container do Chat */
 .chat-container {
     background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
-    width: 350px;
-    height: 500px;
+    width: 400px; /* Tamanho um pouco maior */
+    height: 550px; /* Tamanho um pouco maior */
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
