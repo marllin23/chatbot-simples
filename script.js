@@ -28,7 +28,7 @@ sendBtn.addEventListener('click', () => {
         input.value = ''; // Limpa o campo de entrada
         // Resposta do bot (para exemplo, sempre uma resposta padrão)
         setTimeout(() => {
-            displayMessage("Bot: Olá, como posso ajudar?", true);
+            displayMessage("Bot: Olá, como posso ajudar? 😊", true);
         }, 1000); // Bot responde após 1 segundo
     }
 });
@@ -39,3 +39,15 @@ document.getElementById('user-input').addEventListener('keypress', (event) => {
         sendBtn.click();
     }
 });
+
+// Emojis aleatórios
+const emojiContainer = document.createElement('div');
+emojiContainer.id = 'emoji-container';
+document.body.appendChild(emojiContainer);
+
+const emojis = ['😊', '😂', '😎', '😍', '😜'];
+function randomEmoji() {
+    const randomIndex = Math.floor(Math.random() * emojis.length);
+    emojiContainer.textContent = emojis[randomIndex];
+}
+setInterval(randomEmoji, 2000); // Troca o emoji a cada 2 segundos
