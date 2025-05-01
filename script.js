@@ -2,8 +2,10 @@
 function generateRandomEmoji() {
     const emojis = ["😊", "😂", "😍", "😎", "🥳", "🤔", "😇", "😜", "😢", "🙃"];
     const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    const randomX = Math.floor(Math.random() * window.innerWidth);
-    const randomY = Math.floor(Math.random() * window.innerHeight);
+
+    // Ajuste para garantir que os emojis fiquem visíveis
+    const randomX = Math.floor(Math.random() * (window.innerWidth - 50)); // 50 é para não ultrapassar a largura da tela
+    const randomY = Math.floor(Math.random() * (window.innerHeight - 50)); // 50 é para não ultrapassar a altura da tela
 
     const emojiDiv = document.createElement('div');
     emojiDiv.classList.add('emoji');
