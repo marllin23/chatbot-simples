@@ -1,4 +1,25 @@
-// Função para enviar mensagens
+// Função para gerar emojis aleatórios
+function generateRandomEmoji() {
+    const emojis = ["😊", "😂", "😍", "😎", "🥳", "🤔", "😇", "😜", "😢", "🙃"];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const randomX = Math.floor(Math.random() * window.innerWidth);
+    const randomY = Math.floor(Math.random() * window.innerHeight);
+
+    const emojiDiv = document.createElement('div');
+    emojiDiv.classList.add('emoji');
+    emojiDiv.style.left = `${randomX}px`;
+    emojiDiv.style.top = `${randomY}px`;
+    emojiDiv.innerHTML = randomEmoji;
+    
+    document.getElementById('emoji-container').appendChild(emojiDiv);
+}
+
+// Gerar 5 emojis aleatórios
+for (let i = 0; i < 5; i++) {
+    generateRandomEmoji();
+}
+
+// Função para enviar mensagens do usuário
 function sendMessage() {
     var input = document.getElementById('user-input').value;
     var chatBox = document.getElementById('chat-box');
