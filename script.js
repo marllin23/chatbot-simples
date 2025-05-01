@@ -16,7 +16,7 @@ function generateRandomEmoji() {
     document.getElementById('emoji-container').appendChild(emojiDiv);
 }
 
-// Gerar 5 emojis aleatórios
+// Gerar 5 emojis aleatórios quando a página carrega
 for (let i = 0; i < 5; i++) {
     generateRandomEmoji();
 }
@@ -44,5 +44,15 @@ function sendMessage() {
 
         // Rola para a última mensagem
         chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Resposta simples do bot (exemplo)
+        setTimeout(() => {
+            var botResponse = document.createElement('div');
+            botResponse.classList.add('bot');
+            botResponse.innerHTML = `<i class="fas fa-robot"></i> Olá! Como posso te ajudar? 😊`;
+            chatBox.appendChild(botResponse);
+
+            chatBox.scrollTop = chatBox.scrollHeight; // Rola para a última mensagem
+        }, 1000);
     }
 }
