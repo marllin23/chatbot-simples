@@ -112,10 +112,12 @@ button:hover {
     z-index: -1; /* Emojis abaixo dos outros conteúdos */
 }
 
+/* Emojis com cor clara e visível */
 .emoji {
     position: absolute;
     font-size: 30px;
     animation: float 5s ease-in-out infinite;
+    color: #fff; /* A cor branca ajuda na visibilidade */
 }
 
 /* Animação para os emojis flutuarem */
