@@ -1,53 +1,48 @@
-// Função para exibir mensagens no chat
-function displayMessage(message, isBot = false) {
-    const chatBox = document.getElementById('chat-box');
-    const msgDiv = document.createElement('div');
-    msgDiv.classList.add('message');
+// Função para gerar emojis aleatórios
+function generateRandomEmoji() {
+    const emojis = ["😊", "😂", "😍", "😎", "🥳", "🤔", "😇", "😜", "😢", "🙃"];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-    // Se for mensagem do usuário, usamos a classe "user", se não, "bot"
-    if (isBot) {
-        msgDiv.classList.add('bot');
-    } else {
-        msgDiv.classList.add('user');
-    }
+    // Ajuste para garantir que os emojis fiquem visíveis
+    const randomX = Math.floor(Math.random() * (window.innerWidth - 50)); // 50 é para não ultrapassar a largura da tela
+    const randomY = Math.floor(Math.random() * (window.innerHeight - 50)); // 50 é para não ultrapassar a altura da tela
 
-    msgDiv.textContent = message;
-    chatBox.appendChild(msgDiv);
-
-    // Sempre rolar até o final do chat
-    chatBox.scrollTop = chatBox.scrollHeight;
+    const emojiDiv = document.createElement('div');
+    emojiDiv.classList.add('emoji');
+    emojiDiv.style.left = `${randomX}px`;
+    emojiDiv.style.top = `${randomY}px`;
+    emojiDiv.innerHTML = randomEmoji;
+    
+    document.getElementById('emoji-container').appendChild(emojiDiv);
 }
 
-// Função para enviar mensagens
-const sendBtn = document.getElementById('send-btn');
-sendBtn.addEventListener('click', () => {
-    const input = document.getElementById('user-input');
-    const message = input.value;
-    if (message) {
-        displayMessage(message, false); // Exibe a mensagem do usuário
-        input.value = ''; // Limpa o campo de entrada
-        // Resposta do bot (para exemplo, sempre uma resposta padrão)
-        setTimeout(() => {
-            displayMessage("Bot: Olá, como posso ajudar? 😊", true);
-        }, 1000); // Bot responde após 1 segundo
-    }
-});
-
-// Permitir que o usuário envie a mensagem ao pressionar "Enter"
-document.getElementById('user-input').addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        sendBtn.click();
-    }
-});
-
-// Emojis aleatórios
-const emojiContainer = document.createElement('div');
-emojiContainer.id = 'emoji-container';
-document.body.appendChild(emojiContainer);
-
-const emojis = ['😊', '😂', '😎', '😍', '😜'];
-function randomEmoji() {
-    const randomIndex = Math.floor(Math.random() * emojis.length);
-    emojiContainer.textContent = emojis[randomIndex];
+// Gerar 5 emojis aleatórios
+for (let i = 0; i < 5; i++) {
+    generateRandomEmoji();
 }
-setInterval(randomEmoji, 2000); // Troca o emoji a cada 2 segundos
+
+// Função para enviar mensagens do usuário
+function sendMessage() {
+    var input = document.getElementById('user-input').value;
+    var chatBox = document.getElementById('chat-box');
+    
+    if (input.trim() !== "") {
+        // Adiciona a mensagem do usuário
+        var userMessage = document.createElement('div');
+        userMessage.classList.add('user');
+        userMessage.innerHTML = `<i class="fas fa-user"></i>${input}`;
+        chatBox.appendChild(userMessage);
+        
+        // Resposta do bot (simples exemplo)
+        var botMessage = document.createElement('div');
+        botMessage.classList.add('bot');
+        botMessage.innerHTML = `<i class="fas fa-robot"></i> Estou processando sua mensagem...`;
+        chatBox.appendChild(botMessage);
+
+        // Limpa a caixa de entrada de texto
+        document.getElementById('user-input').value = '';
+
+        // Rola para a última mensagem
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+}
