@@ -31,7 +31,7 @@ function sendMessage() {
         // Mensagem do usuário
         const userMessage = document.createElement('div');
         userMessage.classList.add('user');
-        userMessage.innerHTML = `<i class="fas fa-user"></i> ${inputField.value}`;
+        userMessage.innerHTML = `<span class="emoji-user">👤</span> ${inputField.value}`;
         chatBox.appendChild(userMessage);
 
         // Geração de resposta inteligente
@@ -57,7 +57,7 @@ function sendMessage() {
         // Mensagem do bot
         const botMessage = document.createElement('div');
         botMessage.classList.add('bot');
-        botMessage.innerHTML = `<i class="fas fa-robot"></i> ${response}`;
+        botMessage.innerHTML = `<span class="emoji-chat">🤖</span> ${response}`;
         chatBox.appendChild(botMessage);
 
         // Limpa e rola
@@ -66,8 +66,8 @@ function sendMessage() {
     }
 }
 
+// Função para reiniciar o chat
 function clearChat() {
     const chatBox = document.getElementById('chat-box');
-    chatBox.innerHTML = `<div class="bot welcome"><i class="fas fa-robot"></i> Chat reiniciado. Faça sua pergunta! 🤖</div>`;
+    chatBox.innerHTML = `<div class="bot welcome"><span class="emoji-chat">🤖</span> Chat reiniciado. Faça sua pergunta! 🤖</div>`;
 }
-
