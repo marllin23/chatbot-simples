@@ -8,18 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box" id="chat-box">
-            <div class="bot">
-                <i class="fas fa-robot"></i> Olá, sou o seu assistente virtual!
-            </div>
-        </div>
-        <input type="text" id="user-input" placeholder="Digite sua mensagem...">
-        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Enviar</button>
-    </div>
+  <div id="emoji-container"></div>
 
-    <!-- Emojis flutuantes, gerados dinamicamente pelo JS -->
-    <div id="emoji-container"></div>
+<div class="chat-container">
+  <div id="chat-box" class="chat-box">
+    <div class="bot welcome">
+      <i class="fas fa-robot"></i> Olá! Sou seu chatbot. Pergunte o que quiser! 🤖
+    </div>
+  </div>
+  
+  <div class="input-area">
+    <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+    <button onclick="sendMessage()">Enviar</button>
+    <button onclick="clearChat()" class="clear-btn">Limpar</button>
+  </div>
+</div>
 
     <script src="script.js"></script>
 </body>
