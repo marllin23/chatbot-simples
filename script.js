@@ -26,6 +26,8 @@ function simulateTyping(response, chatBox) {
     botMessage.classList.add('bot');
     botMessage.innerHTML = `<span class="emoji-chat">🤖</span> <span class="typing">Digitando...</span>`;
     chatBox.appendChild(botMessage);
+    receiveSound.play();
+
     chatBox.scrollTop = chatBox.scrollHeight;
 
     setTimeout(() => {
@@ -42,18 +44,19 @@ function playSound(type) {
 
 // Função para enviar mensagens do usuário
 function sendMessage() {
-    const sendSound = document.getElementById('send-sound');
-const receiveSound = document.getElementById('receive-sound');
-
-    const inputField = document.getElementById('user-input');
+     const inputField = document.getElementById('user-input');
     const input = inputField.value.trim().toLowerCase();
     const chatBox = document.getElementById('chat-box');
+       const sendSound = document.getElementById('send-sound');
+const receiveSound = document.getElementById('receive-sound');
 
     if (input !== "") {
         const userMessage = document.createElement('div');
         userMessage.classList.add('user');
         userMessage.innerHTML = `<span class="emoji-user">👤</span> ${inputField.value}`;
         chatBox.appendChild(userMessage);
+        sendSound.play();
+
         playSound('send');
 
         let response = "";
