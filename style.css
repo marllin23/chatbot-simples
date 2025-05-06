@@ -8,8 +8,8 @@ body {
   padding: 40px 20px;
   min-height: 100vh;
   box-sizing: border-box;
-  position: relative; /* Necessário para posicionar emojis */
-  overflow: hidden;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .chat-container {
@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 1;
+  z-index: 10;
 }
 
 .chat-box {
@@ -94,17 +94,26 @@ button {
   font-weight: bold;
 }
 
-/* EMOJIS */
+/* Emojis flutuando */
+#emoji-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .emoji {
   position: absolute;
-  font-size: 30px;
-  animation: float 4s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
+  font-size: 24px;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.8;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); opacity: 1; }
-  50% { transform: translateY(-20px); opacity: 0.8; }
-  100% { transform: translateY(0px); opacity: 1; }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
