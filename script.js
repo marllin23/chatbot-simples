@@ -72,3 +72,8 @@ function sendMessage() {
         }, 1000);
     }
 }
+function clearChat() {
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = `<div class="bot welcome"><i class="fas fa-robot"></i> Chat reiniciado. Faça sua pergunta! 🤖</div>`;
+}
+
