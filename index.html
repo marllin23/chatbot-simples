@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interativo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatBot Interativo</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <div id="emoji-container"></div>
 
-<div class="chat-container">
-  <div id="chat-box" class="chat-box">
-    <div class="bot welcome">
-      <i class="fas fa-robot"></i> Olá! Sou seu chatbot. Pergunte o que quiser! 🤖
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box">
+      <div class="bot welcome"><i class="fas fa-robot"></i> Olá! Sou seu chatbot. Como posso ajudar? 🤖</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+      <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
-  
-  <div class="input-area">
-    <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
-    <button onclick="sendMessage()">Enviar</button>
-    <button onclick="clearChat()" class="clear-btn">Limpar</button>
-  </div>
-</div>
 
-    <script src="script.js"></script>
+  <!-- Sons -->
+  <audio id="send-sound" src="https://www.myinstants.com/media/sounds/message-pop-alert.mp3"></audio>
+  <audio id="receive-sound" src="https://www.myinstants.com/media/sounds/pop-up-kaching.mp3"></audio>
+
+  <script src="script.js"></script>
 </body>
 </html>
