@@ -23,55 +23,49 @@ for (let i = 0; i < 5; i++) {
 
 // Função para enviar mensagens do usuário
 function sendMessage() {
-    var input = document.getElementById('user-input').value;
-    var chatBox = document.getElementById('chat-box');
-    
-    if (input.trim() !== "") {
-        // Adiciona a mensagem do usuário
-        var userMessage = document.createElement('div');
+    const inputField = document.getElementById('user-input');
+    const input = inputField.value.trim().toLowerCase();
+    const chatBox = document.getElementById('chat-box');
+
+    if (input !== "") {
+        // Mensagem do usuário
+        const userMessage = document.createElement('div');
         userMessage.classList.add('user');
-        userMessage.innerHTML = `<i class="fas fa-user"></i>${input}`;
+        userMessage.innerHTML = `<i class="fas fa-user"></i> ${inputField.value}`;
         chatBox.appendChild(userMessage);
-        
-        // Resposta do bot (lógica condicional)
-        var botMessage = document.createElement('div');
+
+        // Geração de resposta inteligente
+        let response = "";
+
+        if (input.includes("oi") || input.includes("olá")) {
+            response = "Olá! Como posso te ajudar hoje? 👋";
+        } else if (input.includes("tudo bem")) {
+            response = "Estou ótimo! E você, tudo certo por aí?";
+        } else if (input.includes("qual seu nome")) {
+            response = "Sou um chatbot criado por você! 😄";
+        } else if (input.includes("hora") || input.includes("horas")) {
+            const now = new Date();
+            response = `Agora são ${now.getHours()}h${String(now.getMinutes()).padStart(2, '0')} 🕒`;
+        } else if (input.includes("obrigado") || input.includes("valeu")) {
+            response = "De nada! Estou sempre aqui para ajudar 🤖";
+        } else if (input.includes("piada")) {
+            response = "Por que o computador foi preso? Porque ele executou um código malicioso! 😂";
+        } else {
+            response = "Hmm... ainda estou aprendendo! Pode perguntar de outro jeito? 🤔";
+        }
+
+        // Mensagem do bot
+        const botMessage = document.createElement('div');
         botMessage.classList.add('bot');
-        botMessage.innerHTML = `<i class="fas fa-robot"></i> Estou processando sua mensagem...`;
+        botMessage.innerHTML = `<i class="fas fa-robot"></i> ${response}`;
         chatBox.appendChild(botMessage);
 
-        // Limpa a caixa de entrada de texto
-        document.getElementById('user-input').value = '';
-
-        // Rola para a última mensagem
+        // Limpa e rola
+        inputField.value = '';
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        // Respostas condicionais do bot
-        setTimeout(() => {
-            var botResponse = document.createElement('div');
-            botResponse.classList.add('bot');
-            
-            // Respostas diferentes dependendo da entrada do usuário
-            if (input.toLowerCase().includes("olá")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Olá! Como posso te ajudar? 😊`;
-            } else if (input.toLowerCase().includes("nome")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Eu sou o Chatbot! Qual é o seu nome?`;
-            } else if (input.toLowerCase().includes("cor favorita")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Minha cor favorita é azul! 💙`;
-            } else if (input.toLowerCase().includes("hobby")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Eu adoro aprender novas coisas! E você, qual é o seu hobby?`;
-            } else if (input.toLowerCase().includes("como você está")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Eu estou ótimo, obrigado por perguntar! 😊 E você?`;
-            } else if (input.toLowerCase().includes("quantos anos você tem")) {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Eu sou intemporal! Não tenho idade. 😎`;
-            } else {
-                botResponse.innerHTML = `<i class="fas fa-robot"></i> Desculpe, não entendi sua pergunta. Pode reformular? 🤔`;
-            }
-
-            chatBox.appendChild(botResponse);
-            chatBox.scrollTop = chatBox.scrollHeight; // Rola para a última mensagem
-        }, 1000);
     }
 }
+
 function clearChat() {
     const chatBox = document.getElementById('chat-box');
     chatBox.innerHTML = `<div class="bot welcome"><i class="fas fa-robot"></i> Chat reiniciado. Faça sua pergunta! 🤖</div>`;
