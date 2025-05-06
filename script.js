@@ -42,6 +42,9 @@ function playSound(type) {
 
 // Função para enviar mensagens do usuário
 function sendMessage() {
+    const sendSound = document.getElementById('send-sound');
+const receiveSound = document.getElementById('receive-sound');
+
     const inputField = document.getElementById('user-input');
     const input = inputField.value.trim().toLowerCase();
     const chatBox = document.getElementById('chat-box');
